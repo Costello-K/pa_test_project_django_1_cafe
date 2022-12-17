@@ -116,12 +116,16 @@ class Chefs(models.Model):
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('images/chefs', filename)
 
+    position = models.PositiveSmallIntegerField()
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
-    position = models.CharField(max_length=50)
+    profession = models.CharField(max_length=50)
     photo = models.ImageField(upload_to=get_file_name)
     is_visible = models.BooleanField(default=True)
     link_twitter = models.URLField()
     link_facebook = models.URLField()
     link_instagram = models.URLField()
     link_linkedin = models.URLField()
+
+    class Meta:
+        ordering = ('position',)
