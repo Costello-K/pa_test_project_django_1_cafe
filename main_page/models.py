@@ -162,7 +162,7 @@ class Review(models.Model):
     profession = models.CharField(max_length=50, blank=True)
     photo = models.ImageField(upload_to=get_file_name, blank=True)
     is_visible = models.BooleanField(default=True)
-    rating = models.PositiveSmallIntegerField(choices=(range(1, 6)))
+    rating = models.PositiveSmallIntegerField(choices=(1, 2, 3, 4, 5))
     date_review = models.DateTimeField()
 
     class Meta:
