@@ -5,8 +5,7 @@ import os
 
 class StartPage(models.Model):
 
-    @staticmethod
-    def get_file_name(filename: str):
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('video/start_page', filename)
@@ -27,8 +26,7 @@ class StartPage(models.Model):
 # Create your models here.
 class About(models.Model):
 
-    @staticmethod
-    def get_file_name(filename: str):
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('video/about', filename)
@@ -67,8 +65,7 @@ class DishCategory(models.Model):
 
 class Dish(models.Model):
 
-    @staticmethod
-    def get_file_name(filename: str):
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('images/dishes', filename)
@@ -92,8 +89,7 @@ class Dish(models.Model):
 
 class Events(models.Model):
 
-    @staticmethod
-    def get_file_name(filename: str):
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('images/events', filename)
@@ -113,8 +109,8 @@ class Events(models.Model):
 
 
 class RestaurantPhoto(models.Model):
-    @staticmethod
-    def get_file_name(filename: str):
+
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('images/restaurant', filename)
@@ -128,8 +124,8 @@ class RestaurantPhoto(models.Model):
 
 
 class Chefs(models.Model):
-    @staticmethod
-    def get_file_name(filename: str):
+
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('images/chefs', filename)
@@ -150,8 +146,8 @@ class Chefs(models.Model):
 
 
 class Review(models.Model):
-    @staticmethod
-    def get_file_name(filename: str):
+
+    def get_file_name(self, filename: str):
         ext = filename.strip().split('.')[-1]
         filename = f'{uuid.uuid4()}.{ext}'
         return os.path.join('images/review', filename)
@@ -162,7 +158,7 @@ class Review(models.Model):
     profession = models.CharField(max_length=50, blank=True)
     photo = models.ImageField(upload_to=get_file_name, blank=True)
     is_visible = models.BooleanField(default=True)
-    rating = models.PositiveSmallIntegerField(choices=(1, 2, 3, 4, 5))
+    rating = models.PositiveSmallIntegerField(choices=((i, i) for i in range(1, 6)))
     date_review = models.DateTimeField()
 
     class Meta:
