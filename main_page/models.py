@@ -102,9 +102,6 @@ class RestaurantPhoto(models.Model):
     photo = models.ImageField(upload_to=get_file_name)
     is_visible = models.BooleanField(default=True)
 
-    def __str__(self):
-        return f'{self.title}: {self.date_stop_event}'
-
     class Meta:
         ordering = ('position',)
 
@@ -129,3 +126,23 @@ class Chefs(models.Model):
 
     class Meta:
         ordering = ('position',)
+
+
+class Review(models.Model):
+    @staticmethod
+    def get_file_name(filename: str):
+        ext = filename.strip().split('.')[-1]
+        filename = f'{uuid.uuid4()}.{ext}'
+        return os.path.join('images/review', filename)
+
+    position = models.PositiveSmallIntegerField()
+    name = models.CharField(max_length=30)
+    surname = models.CharField(max_length=30)
+    profession = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to=get_file_name)
+    is_visible = models.BooleanField(default=True)
+    rating = models.PositiveSmallIntegerField(max_length=1)
+    date_review = models.DateTimeField()
+
+    class Meta:
+        ordering = ('date_review',)
