@@ -141,7 +141,7 @@ class Review(models.Model):
     profession = models.CharField(max_length=50)
     photo = models.ImageField(upload_to=get_file_name)
     is_visible = models.BooleanField(default=True)
-    rating = models.PositiveSmallIntegerField(max_length=1)
+    rating = models.PositiveSmallIntegerField()
     date_review = models.DateTimeField()
 
     class Meta:
