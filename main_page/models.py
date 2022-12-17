@@ -3,6 +3,27 @@ import uuid
 import os
 
 
+class StartPage(models.Model):
+
+    @staticmethod
+    def get_file_name(filename: str):
+        ext = filename.strip().split('.')[-1]
+        filename = f'{uuid.uuid4()}.{ext}'
+        return os.path.join('video/start_page', filename)
+
+    position = models.PositiveSmallIntegerField()
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=400)
+    photo = models.FileField(upload_to=get_file_name)
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.title}: {self.position}'
+
+    class Meta:
+        ordering = ('position', )
+
+
 # Create your models here.
 class About(models.Model):
 
@@ -119,10 +140,10 @@ class Chefs(models.Model):
     profession = models.CharField(max_length=50)
     photo = models.ImageField(upload_to=get_file_name)
     is_visible = models.BooleanField(default=True)
-    link_twitter = models.URLField()
-    link_facebook = models.URLField()
-    link_instagram = models.URLField()
-    link_linkedin = models.URLField()
+    link_twitter = models.URLField(blank=True)
+    link_facebook = models.URLField(blank=True)
+    link_instagram = models.URLField(blank=True)
+    link_linkedin = models.URLField(blank=True)
 
     class Meta:
         ordering = ('position',)
@@ -137,11 +158,11 @@ class Review(models.Model):
 
     position = models.PositiveSmallIntegerField()
     name = models.CharField(max_length=30)
-    surname = models.CharField(max_length=30)
-    profession = models.CharField(max_length=50)
-    photo = models.ImageField(upload_to=get_file_name)
+    surname = models.CharField(max_length=30, blank=True)
+    profession = models.CharField(max_length=50, blank=True)
+    photo = models.ImageField(upload_to=get_file_name, blank=True)
     is_visible = models.BooleanField(default=True)
-    rating = models.PositiveSmallIntegerField()
+    rating = models.PositiveSmallIntegerField(choices=(range(1, 6)))
     date_review = models.DateTimeField()
 
     class Meta:
