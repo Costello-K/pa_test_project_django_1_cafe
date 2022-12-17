@@ -63,7 +63,7 @@ class Dish(models.Model):
     photo = models.ImageField(upload_to=get_file_name)
 
     def __str__(self):
-        return f'{self.name}: {self.position}'
+        return f'{self.name}'
 
     class Meta:
         ordering = ('position', )
@@ -89,3 +89,39 @@ class Events(models.Model):
 
     class Meta:
         ordering = ('date_stop_event', )
+
+
+class RestaurantPhoto(models.Model):
+    @staticmethod
+    def get_file_name(filename: str):
+        ext = filename.strip().split('.')[-1]
+        filename = f'{uuid.uuid4()}.{ext}'
+        return os.path.join('images/restaurant', filename)
+
+    position = models.PositiveSmallIntegerField()
+    photo = models.ImageField(upload_to=get_file_name)
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.title}: {self.date_stop_event}'
+
+    class Meta:
+        ordering = ('position',)
+
+
+class Chefs(models.Model):
+    @staticmethod
+    def get_file_name(filename: str):
+        ext = filename.strip().split('.')[-1]
+        filename = f'{uuid.uuid4()}.{ext}'
+        return os.path.join('images/chefs', filename)
+
+    name = models.CharField(max_length=30)
+    surname = models.CharField(max_length=30)
+    position = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to=get_file_name)
+    is_visible = models.BooleanField(default=True)
+    link_twitter = models.URLField()
+    link_facebook = models.URLField()
+    link_instagram = models.URLField()
+    link_linkedin = models.URLField()
