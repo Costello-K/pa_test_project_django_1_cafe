@@ -158,7 +158,7 @@ class Review(models.Model):
     profession = models.CharField(max_length=50, blank=True)
     photo = models.ImageField(upload_to=get_file_name, blank=True)
     is_visible = models.BooleanField(default=True)
-    rating = models.PositiveSmallIntegerField(choices=((i, i) for i in range(1, 6)))
+    rating = models.CharField(max_length=5, choices=(('1' * i, i) for i in range(1, 6)))
     date_review = models.DateTimeField()
     message = models.CharField(max_length=300, blank=True)
 

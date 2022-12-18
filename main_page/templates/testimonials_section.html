@@ -11,17 +11,9 @@
                   <h3>{{ review.name }} {{ review.surname }}</h3>
                   <h4>{{ review.profession }}</h4>
                   <div class="stars">
-                    {% if review.rating == 1 %}
+                    {% for _ in review.rating %}
                       <i class="bi bi-star-fill"></i>
-                    {% elif review.rating == 2 %}
-                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    {% elif review.rating == 3 %}
-                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    {% elif review.rating == 4 %}
-                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    {% elif review.rating == 5 %}
-                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    {% endif %}
+                    {% endfor %}
                   </div>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
