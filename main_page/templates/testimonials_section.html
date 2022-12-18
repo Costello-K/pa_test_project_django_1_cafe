@@ -11,7 +11,17 @@
                   <h3>{{ review.name }} {{ review.surname }}</h3>
                   <h4>{{ review.profession }}</h4>
                   <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    {% if review.rating == 1 %}
+                      <i class="bi bi-star-fill"></i>
+                    {% elif review.rating == 2 %}
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    {% elif review.rating == 3 %}
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    {% elif review.rating == 4 %}
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    {% elif review.rating == 5 %}
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    {% endif %}
                   </div>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
