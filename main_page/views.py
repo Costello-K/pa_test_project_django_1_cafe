@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render
-from .models import About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs
+from .models import About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs, Review
 
 
 # Create your views here.
@@ -13,6 +13,7 @@ def main_page(request):
     events = Events.objects.filter(is_visible=True, date_stop_event__gt=datetime.now())
     gallery = RestaurantPhoto.objects.filter(is_visible=True)
     chefs = Chefs.objects.filter(is_visible=True)
+    reviews = Review.objects.filter(is_visible=True)
     return render(request, 'main_page.html', context={
         'about': about,
         'cards': cards,
@@ -21,5 +22,6 @@ def main_page(request):
         'specials': specials_dishes,
         'events': events,
         'gallery': gallery,
-        'chefss': chefs,
+        'chefs': chefs,
+        'reviews': reviews,
     })

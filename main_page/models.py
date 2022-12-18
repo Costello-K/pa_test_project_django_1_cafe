@@ -160,6 +160,7 @@ class Review(models.Model):
     is_visible = models.BooleanField(default=True)
     rating = models.PositiveSmallIntegerField(choices=((i, i) for i in range(1, 6)))
     date_review = models.DateTimeField()
+    message = models.CharField(max_length=300, blank=True)
 
     class Meta:
         ordering = ('date_review',)
