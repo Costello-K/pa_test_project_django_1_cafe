@@ -4,8 +4,8 @@ from .models import About, WhyUsCard, DishCategory, Dish, Events
 
 # Create your views here.
 def main_page(request):
-    about = About.objects.all()
-    cards = WhyUsCard.objects.filter(is_visible=True)
+    about = About.objects.first()
+    cards = WhyUsCard.objects.filter()
     categories = DishCategory.objects.filter(is_visible=True)
     dishes = Dish.objects.filter(is_visible=True, is_special=False)
     specials_dishes = Dish.objects.filter(is_visible=True, is_special=True)

@@ -1,0 +1,20 @@
+{% load static %}
+
+<section id="about" class="about">
+      <div class="container-fluid">
+        <div class="row">
+          {% block about %}
+            <div class="col-lg-5 align-items-stretch video-box" style='background-media: url({% static "assets/img/about.jpg" %});'>
+              <a href={{ about.video.url }} class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+            </div>
+
+            <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
+              <div class="content">
+                <h3><strong>{{ about.title }}</strong></h3>
+                <p class="fst-italic">{{ about.description }}</p>
+              </div>
+            </div>
+          {% endblock %}
+        </div>
+      </div>
+    </section>
