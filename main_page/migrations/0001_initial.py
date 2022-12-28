@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=100)),
                 ('description', models.TextField(max_length=200)),
-                ('video', models.FileField(upload_to=main_page.models.About.get_file_name)),
+                ('video', models.FileField(upload_to=main_page.models.NewFileName.get_file_name)),
             ],
         ),
         migrations.CreateModel(
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('surname', models.CharField(max_length=30)),
                 ('profession', models.CharField(max_length=50)),
-                ('photo', models.ImageField(upload_to=main_page.models.Chefs.get_file_name)),
+                ('photo', models.ImageField(upload_to=main_page.models.NewFileName.get_file_name)),
                 ('is_visible', models.BooleanField(default=True)),
                 ('link_twitter', models.URLField(blank=True)),
                 ('link_facebook', models.URLField(blank=True)),
@@ -60,7 +60,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=100, unique=True)),
                 ('description', models.TextField(max_length=300)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=8)),
-                ('photo', models.ImageField(upload_to=main_page.models.Events.get_file_name)),
+                ('photo', models.ImageField(upload_to=main_page.models.NewFileName.get_file_name)),
                 ('is_visible', models.BooleanField(default=True)),
                 ('date_stop_event', models.DateTimeField()),
             ],
@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('position', models.PositiveSmallIntegerField()),
-                ('photo', models.ImageField(upload_to=main_page.models.RestaurantPhoto.get_file_name)),
+                ('photo', models.ImageField(upload_to=main_page.models.NewFileName.get_file_name)),
                 ('is_visible', models.BooleanField(default=True)),
             ],
             options={
@@ -88,7 +88,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('surname', models.CharField(blank=True, max_length=30)),
                 ('profession', models.CharField(blank=True, max_length=50)),
-                ('photo', models.ImageField(blank=True, upload_to=main_page.models.Review.get_file_name)),
+                ('photo', models.ImageField(blank=True, upload_to=main_page.models.NewFileName.get_file_name)),
                 ('is_visible', models.BooleanField(default=True)),
                 ('rating', models.PositiveSmallIntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)])),
                 ('date_review', models.DateTimeField()),
@@ -104,7 +104,7 @@ class Migration(migrations.Migration):
                 ('position', models.PositiveSmallIntegerField()),
                 ('title', models.CharField(max_length=100)),
                 ('description', models.TextField(max_length=400)),
-                ('photo', models.FileField(upload_to=main_page.models.StartPage.get_file_name)),
+                ('photo', models.FileField(upload_to=main_page.models.NewFileName.get_file_name)),
                 ('is_visible', models.BooleanField(default=True)),
             ],
             options={
@@ -135,7 +135,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(blank=True, max_length=200)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=8)),
                 ('ingredients', models.CharField(max_length=100)),
-                ('photo', models.ImageField(upload_to=main_page.models.Dish.get_file_name)),
+                ('photo', models.ImageField(upload_to=main_page.models.NewFileName.get_file_name)),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_page.dishcategory')),
             ],
             options={

@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block site_content %}
+
+     <div class="container d-flex justify-content-center align-items-center">
+
+         <div class="row">
+            <div>
+                <h3>Нові повідомлення</h3>
+            </div>
+            {% for message in messages %}
+                <div>
+                    <div>
+                        <p>Час звернення: {{ message.date|date:'Y-m-d H:i:s' }}</p>
+                    </div>
+                    <div class="col-lg">
+                        <p>Тема: {{ message.subject_message }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg">
+                            <p>Ім'я: {{ message.name }}</p>
+                        </div>
+                        <div class="col-lg">
+                            <p>e-mail: {{ message.email }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>{{ message.message }}</p>
+                    </div>
+                    <div>
+                        <a href="{% url 'manager:update_messages' pk=message.pk %}"><button>Опрацювати</button></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+     </div>
+
+{% endblock %}

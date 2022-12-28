@@ -2,13 +2,13 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Check our tasty <span>Menu</span></h2>
+          <h2>Ознайомтесь з нашим смачним <span>Меню</span></h2>
         </div>
 
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="menu-flters">
-              <li data-filter="*" class="filter-active">Show All</li>
+              <li data-filter="*" class="filter-active">Показати Все</li>
               {% for category in categories %}
                 <li data-filter=".category{{ category.pk }}">{{ category.name }}</li>
               {% endfor %}
@@ -20,7 +20,7 @@
           {% for dish in dishes %}
               <div class="col-lg-6 menu-item category{{ dish.category.pk }}">
                 <div class="menu-content">
-                  <a href="#">{{ dish.name }}</a><span>${{ dish.price }}</span>
+                  <a href="#">{{ dish.name }}</a><span>₴{{ dish.price }}</span>
                 </div>
                 <div class="menu-ingredients">
                   {{ dish.ingredients }}

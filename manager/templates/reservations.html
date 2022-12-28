@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block site_content %}
+
+     <div class="container d-flex justify-content-center align-items-center">
+
+
+         <div class="row">
+            <div>
+                <h3>Не опрацьовані резервації</h3>
+            </div>
+            {% for message in reservations %}
+                <div>
+                    <div>
+                        <p>Час створення резервації: {{ message.date|date:'Y-m-d H:i:s' }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg">
+                            <p>Ім'я: {{ message.name }}</p>
+                        </div>
+                        <div class="col-lg">
+                            <p>e-mail: {{ message.email }}</p>
+                        </div>
+                        <div class="col-lg">
+                            <p>Телефон: {{ message.phone }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg">
+                            <p>Дата: {{ message.future_date_reserve|date:'Y-m-d' }}</p>
+                        </div>
+                        <div class="col-lg">
+                            <p>Час: {{ message.future_time_reserve|time:'H:i' }}</p>
+                        </div>
+                        <div class="col-lg">
+                            <p>К-ть персон: {{ message.persons }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Повідомлення: {{ message.message }}</p>
+                    </div>
+                    <div>
+                        <a href="{% url 'manager:update_reservations' pk=message.pk %}"><button>Опрацювати</button></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+     </div>
+
+{% endblock %}

@@ -2,43 +2,55 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <div class="logo me-auto">
-        <h1><a href="index.html">Delicious</a></h1>
+        <h1><a href="index.html">Деліція</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-          <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
-          <li><a class="nav-link scrollto" href="#events">Events</a></li>
-          <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Головна</a></li>
+          <li><a class="nav-link scrollto" href="#about">Про нас</a></li>
+          <li><a class="nav-link scrollto" href="#menu">Меню</a></li>
+          <li><a class="nav-link scrollto" href="#specials">Спеціальні Страви</a></li>
+          <li><a class="nav-link scrollto" href="#events">Події</a></li>
+          <li><a class="nav-link scrollto" href="#chefs">Кухарі</a></li>
+          <li><a class="nav-link scrollto" href="#gallery">Галерея</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Контакти</a></li>
+          {% if user.username == 'admin' %}
+            <li class="dropdown"><a href="#"><span>Адміністрування</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/admin">Адмінка</a></li>
+              </ul>
+            </li>
+          {% elif 'manager' in user.groups.all.0.name %}
+            <li class="dropdown"><a href="#"><span>Меню Менеджера</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="{% url 'manager:reservations' %}">Резервації</a></li>
+                <li><a href="{% url 'manager:messages' %}">Повідомлення</a></li>
+              </ul>
+            </li>
+          {% endif %}
+          {% if not user.username %}
+            <li class="dropdown"><a href="#"><span>УВІЙТИ</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/login">Вхід</a></li>
+                <li><a href="/registration">Реєстрація</a></li>
+              </ul>
+            </li>
+          {% endif %}
+          {% if user.username %}
+            <li class="dropdown"><a href="/logout"><span>ВИЙТИ</span></a>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#book-a-table" class="book-a-table-btn scrollto">Book a table</a>
+      <a href="#book-a-table" class="book-a-table-btn scrollto">РЕЗЕРВ СТОЛУ</a>
+
+      {% if user.username %}
+        <a  style="margin-left: 20px; margin-right: 20px" class="animate__fadeInUp">{{ user.username }}</a>
+      {% endif %}
 
     </div>
   </header>

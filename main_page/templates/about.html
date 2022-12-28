@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row">
           {% block about %}
-            <div class="col-lg-5 align-items-stretch video-box" style='background-media: url({% static "assets/img/about.jpg" %});'>
+            <div class="col-lg-5 align-items-stretch video-box" style='background-image: url({{ about.photo.url }});'>
               <a href={{ about.video.url }} class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
             </div>
 
