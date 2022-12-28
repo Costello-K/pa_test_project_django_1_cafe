@@ -8,9 +8,18 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+html {
+  height: 100%;
+}
+
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Helvetica', sans-serif;
   color: #444444;
+  min-height: 100%;
+}
+
+main{
+   min-height: calc(100vh - 300px);
 }
 
 a {
@@ -29,7 +38,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Satisfy", sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -1580,6 +1589,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
+  height: 300px;
   background: #35322d;
   color: #fff;
   font-size: 14px;
@@ -1597,7 +1607,7 @@ section {
 }
 
 #footer p {
-  font-size: 15;
+  font-size: 15px;
   font-style: italic;
   padding: 0;
   margin: 0 0 40px 0;
