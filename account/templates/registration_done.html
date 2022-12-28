@@ -2,9 +2,31 @@
 
 {% block site_content %}
 
-     <div class="container d-flex justify-content-center align-items-center">
-         <h3 class="text-center">Привіт {{ user.username }}!</h3>
-         <p class="text-center">Реєстрація пройшла успішно</p>
+<style>
+.empty{
+    height: 200px;
+    width: 100%;
+    background: #444444;
+}
+
+.registration-done-container{
+    padding: 50px 0px;
+    text-align: center;
+}
+
+.registration-done-title{
+    padding: 0;
+    margin: 30px;
+}
+
+.registration-done-body{
+    font-size: 22px;
+}
+</style>
+     <div class="empty"></div>
+     <div class="registration-done-container">
+         <h2 class="registration-done-title">Привіт {{ user.username }}!</h2>
+         <p class="registration-done-body">Реєстрація пройшла успішно</p>
      </div>
 
 {% endblock %}

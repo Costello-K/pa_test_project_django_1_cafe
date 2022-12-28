@@ -2,16 +2,61 @@
 
 {% block site_content %}
 
-     <div class="container d-flex justify-content-center align-items-center">
+<style>
+.empty{
+    height: 150px;
+    width: 100%;
+    background: #444444;
+}
 
+.reservations-container{
+    padding: 30px 0px;
+}
 
+.reservation-header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reservation-container{
+    border: thick double #444444;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.reservation-time{
+    text-align: right;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    border-bottom: #444444 2px solid;
+}
+
+.reservation-button{
+    text-align: right;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+
+.reservation-message-title{
+    padding: 0;
+    margin: 0;
+}
+
+.reservation-message{
+    border: #444444 1px solid;
+    padding: 10px;
+}
+</style>
+     <div class="empty"></div>
+     <div class="container d-flex justify-content-center align-items-center reservations-container">
          <div class="row">
-            <div>
+            <div class="reservation-header">
                 <h3>Не опрацьовані резервації</h3>
             </div>
             {% for message in reservations %}
-                <div>
-                    <div>
+                <div class="reservation-container">
+                    <div class="reservation-time">
                         <p>Час створення резервації: {{ message.date|date:'Y-m-d H:i:s' }}</p>
                     </div>
                     <div class="row">
@@ -27,7 +72,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg">
-                            <p>Дата: {{ message.future_date_reserve|date:'Y-m-d' }}</p>
+                            <p>Бронювання на дату: {{ message.future_date_reserve|date:'Y-m-d' }}</p>
                         </div>
                         <div class="col-lg">
                             <p>Час: {{ message.future_time_reserve|time:'H:i' }}</p>
@@ -37,15 +82,15 @@
                         </div>
                     </div>
                     <div>
-                        <p>Повідомлення: {{ message.message }}</p>
+                        <p class="reservation-message-title">Повідомлення:</p>
+                        <p class="reservation-message">{{ message.message }}</p>
                     </div>
-                    <div>
-                        <a href="{% url 'manager:update_reservations' pk=message.pk %}"><button>Опрацювати</button></a>
+                    <div class="reservation-button">
+                        <a href="{% url 'manager:update_reservations' pk=message.pk %}"><button type="button" class="btn btn-secondary">Опрацювати</button></a>
                     </div>
                 </div>
             {% endfor %}
         </div>
-
      </div>
 
 {% endblock %}
