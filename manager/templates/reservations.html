@@ -20,7 +20,7 @@
 
 .reservation-container{
     border: thick double #444444;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 20px;
 }
@@ -55,7 +55,7 @@
                 <h3>Не опрацьовані резервації</h3>
             </div>
             {% for message in reservations %}
-                <div class="reservation-container">
+                <div class="reservation-container shadow p-3 mb-5 bg-white">
                     <div class="reservation-time">
                         <p>Час створення резервації: {{ message.date|date:'Y-m-d H:i:s' }}</p>
                     </div>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div>
-                        <p class="reservation-message-title">Повідомлення:</p>
+                        <p class="reservation-message-title"><b>Повідомлення:</b></p>
                         <p class="reservation-message">{{ message.message }}</p>
                     </div>
                     <div class="reservation-button">

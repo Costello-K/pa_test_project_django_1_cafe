@@ -13,23 +13,25 @@
     padding: 30px 0px;
 }
 
-.message-header{
+.messages-header{
     text-align: center;
     margin-bottom: 20px;
 }
 
 .message-container{
     border: thick double #444444;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 20px;
 }
 
-.message-time{
-    text-align: right;
-    padding-right: 50px;
+.message-header{
     margin-bottom: 10px;
     border-bottom: #444444 2px solid;
+}
+
+.message-time{
+    text-align: right;
 }
 
 .message-button{
@@ -51,27 +53,28 @@
      <div class="empty"></div>
      <div class="container d-flex justify-content-center align-items-center messages-container">
          <div class="row">
-            <div class="message-header">
+            <div class="messages-header">
                 <h3>Нові повідомлення</h3>
             </div>
             {% for message in messages %}
-                <div class="message-container">
-                    <div class="message-time">
-                        <p>Час звернення: {{ message.date|date:'Y-m-d H:i:s' }}</p>
-                    </div>
-                    <div class="col-lg">
-                        <p>Тема: {{ message.subject_message }}</p>
-                    </div>
-                    <div class="row">
+                <div class="message-container shadow p-3 mb-5 bg-white">
+                    <div class="row message-header">
                         <div class="col-lg">
                             <p>Ім'я: {{ message.name }}</p>
                         </div>
                         <div class="col-lg">
                             <p>e-mail: {{ message.email }}</p>
                         </div>
+                        <div class="col-lg message-time">
+                            <p>Дата та час звернення: {{ message.date|date:'Y-m-d H:i:s' }}</p>
+                        </div>
                     </div>
+                    <div class="col-lg">
+                        <p><b>Тема: {{ message.subject_message }}</b></p>
+                    </div>
+
                     <div>
-                        <p class="message-message-title">Повідомлення:</p>
+                        <p class="message-message-title"><b>Повідомлення:</b></p>
                         <p class="message-message">{{ message.message }}</p>
                     </div>
                     <div class="message-button">
