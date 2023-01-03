@@ -1177,6 +1177,12 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .book-a-table .php-email-form #phone{
+    margin-top: 16px;
+  }
+}
+
 .book-a-table .php-email-form input,
 .book-a-table .php-email-form textarea {
   border-radius: 0;

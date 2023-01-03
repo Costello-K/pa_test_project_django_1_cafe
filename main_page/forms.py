@@ -13,12 +13,9 @@ from django_google_maps import fields as map_fields
 #         model = Rental
 #         fields = ('formfield_overrides', )
 #
-#     formfield_overrides = {
-#         map_fields.AddressField: {
-#             'widget': map_widgets.GoogleMapsAddressWidget(attrs={
-#                 'data-autocomplete-options': json.dumps({'types': ['geocode', 'establishment'],
-#                                                          'componentRestrictions': {'country': 'us'}
-#                                                          })})}}
+#     formfield_overrides = map_fields.AddressField(widget=map_widgets.GoogleMapsAddressWidget(attrs={
+#                 'data-autocomplete-options': json.dumps({'types': ['geocode', 'establishment'], 'componentRestrictions': {'country': 'uk'}})
+#                                                   }))
 
 
 class FormUserReservation(forms.ModelForm):

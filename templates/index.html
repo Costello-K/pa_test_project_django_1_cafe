@@ -2,6 +2,26 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    {#.timepicker  bootstrap-datetimepicker-widget#}
+    {#div.bootstrap-datetimepicker-widget.dropdown-menu .timepicker-picker .table-condensed tr td {#}
+    {#    width: 40px;#}
+    {#    height: 40px;#}
+
+    div.bootstrap-datetimepicker-widget.dropdown-menu {
+        width: 100px;
+    }
+    div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed .separator {
+        width: 10px;
+    }
+    div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed tr:nth-child(2) td a.btn {
+        height: 40px;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+</style>
 
 <head>
   <meta charset="utf-8">
@@ -19,15 +39,20 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href={% static "assets/vendor/animate.css/animate.min.css" %} rel="stylesheet">
-  <link href={% static "assets/vendor/bootstrap/css/bootstrap.min.css" %} rel="stylesheet">
-  <link href={% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %} rel="stylesheet">
-  <link href={% static "assets/vendor/boxicons/css/boxicons.min.css" %} rel="stylesheet">
-  <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
-  <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
+  <link rel="stylesheet" href={% static "assets/vendor/animate.css/animate.min.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/bootstrap/css/bootstrap.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/datetimepicker/bootstrap.min.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/boxicons/css/boxicons.min.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/glightbox/css/glightbox.min.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/swiper/swiper-bundle.min.css" %}>
+  <link rel="stylesheet" href={% static "assets/vendor/daterangepicker/daterangepicker.css" %}/>
+  <link rel="stylesheet" href={% static "assets/vendor/datetimepicker/bootstrap-datetimepicker.min.css" %}/>
+
+    {#  <link rel="stylesheet" type="text/css" href={% static "assets/vendor/timepicker/jquery.timepicker.min.css" %}/>#}
 
   <!-- Template Main CSS File -->
-  <link href={% static "assets/css/style.css" %} rel="stylesheet">
+  <link rel="stylesheet" href={% static "assets/css/style.css" %}>
 
   <!-- =======================================================
   * Template Name: Delicious - v4.8.0
@@ -60,10 +85,54 @@
   <script src={% static "assets/vendor/glightbox/js/glightbox.min.js" %}></script>
   <script src={% static "assets/vendor/isotope-layout/isotope.pkgd.min.js" %}></script>
   <script src={% static "assets/vendor/swiper/swiper-bundle.min.js" %}></script>
+  <script src={% static "assets/vendor/daterangepicker/jquery.min.js" %}></script>
+  <script src={% static "assets/vendor/daterangepicker/moment.min.js" %}></script>
+  <script src={% static "assets/vendor/daterangepicker/daterangepicker.min.js" %}></script>
+  <script src={% static "assets/vendor/datetimepicker/bootstrap-datetimepicker.min.js" %}></script>
 {#  <script src={% static "assets/vendor/php-email-form/validate.js" %}></script>#}
 
   <!-- Template Main JS File -->
   <script src={% static "assets/js/main.js" %}></script>
+  <script>
+    $(function(){
+        $('#date').daterangepicker({
+            singleDatePicker: true,
+            autoApply: true,
+            locale: {
+                format: 'YYYY-MM-DD',
+                "applyLabel": "Застосувати",
+                "cancelLabel": "Скасувати",
+                "daysOfWeek": [
+                    "Нд",
+                    "Пн",
+                    "Вт",
+                    "Ср",
+                    "Чт",
+                    "Пт",
+                    "Сб"
+                ],
+                "monthNames": [
+                    "Січень",
+                    "Лютий",
+                    "Березень",
+                    "Квітень",
+                    "Травень",
+                    "Червень",
+                    "Липень",
+                    "Серпень",
+                    "Вересень",
+                    "Жовтень",
+                    "Листопад",
+                    "Грудень"
+                ],
+            }
+        });
+        $('#date').val('');
+        $('#time').datetimepicker({
+          format: "HH:mm"
+        });
+    });
+  </script>
 
 </body>
 

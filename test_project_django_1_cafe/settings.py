@@ -24,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_path = os.path.join(BASE_DIR, '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
-# SECRET_KEY = 'django-insecure-5iys0*^t)g5c=85ppvsyy+vg4q#)%m04-mf6qguult!ofve7!l'
-SECRET_KEY = os.environ.get('SECRET_KEY')
-GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
+GOOGLE_MAPS_API_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

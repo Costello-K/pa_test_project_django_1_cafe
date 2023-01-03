@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render, redirect
-from .models import StartPage, About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs, Review\
+from .models import StartPage, About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs, Review
     # , Maps
 from .forms import FormUserReservation, FormUserMessage
 
@@ -11,15 +11,21 @@ MAX_QUANTITY_REVIEWS_DISPLAYED = 10
 
 # Create your views here.
 def main_page(request):
+    popup_reservation, popup_message, not_valid_form = False, False, False
+
     if request.method == 'POST':
         form_user_reservation = FormUserReservation(request.POST)
         form_user_messages = FormUserMessage(request.POST)
         if form_user_reservation.is_valid():
             form_user_reservation.save()
-            return redirect('/')
-        if form_user_messages.is_valid():
+            popup_reservation = True
+            # return redirect('/')
+        elif form_user_messages.is_valid():
             form_user_messages.save()
-            return redirect('/')
+            popup_message = True
+            # return redirect('/')
+        else:
+            not_valid_form = True
 
     start_page = StartPage.objects.filter(is_visible=True)[:MAX_QUANTITY_START_PAGES_SLIDES]
     about = About.objects.first()
@@ -48,5 +54,8 @@ def main_page(request):
         'reviews': reviews,
         'form_user_reservation': form_user_reservation,
         'form_user_message': form_user_message,
+        'popup_reservation': popup_reservation,
+        'popup_message': popup_message,
+        'not_valid_form': not_valid_form,
         # 'maps': maps,
     })

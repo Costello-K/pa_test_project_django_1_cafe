@@ -26,7 +26,7 @@
           {% elif 'manager' in user.groups.all.0.name %}
             <li class="dropdown"><a href="/#"><span>Меню Менеджера</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="{% url 'manager:reservations' %}">Резервації</a></li>
+                <li><a href="{% url 'manager:reservations' %}">Бронювання</a></li>
                 <li><a href="{% url 'manager:messages' %}">Повідомлення</a></li>
               </ul>
             </li>

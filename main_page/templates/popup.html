@@ -1,0 +1,78 @@
+<style>
+    div.container-popup {
+        width: 100vw;
+        height: 0;
+        position: fixed;
+    }
+
+    div.container-popup.active {
+        z-index: 99999999;
+        height: 100vh;
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
+    }
+
+    div.container-popup div.popup {
+        background: #35322dc4;
+        {#border: 2px solid #ff9b08;#}
+        filter: drop-shadow(0 5px 10px #baa32f);
+        border-radius: 10px;
+        width: 400px;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0.1);
+        transition: transform 0.4s, top 0.4s;
+        visibility: hidden;
+        padding: 20px;
+    }
+
+    div.container-popup div.popup.active {
+        top: 50%;
+        transform: translate(-50%,-50%) scale(1);
+        visibility: visible;
+    }
+
+    .popup-message {
+        text-align: center;
+        color: white;
+    }
+
+    .popup-button-ok {
+        margin-top: 30px;
+        border: none;
+    }
+</style>
+
+<div id="container-popup" class="container-popup active">
+    <div id="popup" class="popup active">
+        <div class="popup-message">
+            {% if popup_reservation %}
+                <h3>Дякуємо!</h3>
+                <p>Ваша резервування прийнята в обробку</p>
+                <p>Наш менеджер зателефонує Вам для уточнення інформації</p>
+            {% elif popup_message %}
+                <h3>Дякуємо!</h3>
+                <p>Ваше повідомлення прийнято в обробку</p>
+                <p>Ми зв'яжемося з Вами</p>
+            {% else %}
+                <h3>Помилка!</h3>
+                <p>Не вірно введені дані</p>
+                <p>Спробуйте ще раз</p>
+            {% endif %}
+        </div>
+        {% if popup_reservation or popup_message %}
+            <button class="book-a-table-btn scrollto popup-button-ok" onClick="closePopup()">ПРОДОВЖИТИ ПЕРЕГЛЯД</button>
+        {% else %}
+            <button class="book-a-table-btn scrollto popup-button-ok" onClick="closePopup()">ПРОДОВЖИТИ</button>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    function closePopup() {
+        $('#popup').removeClass('active')
+        $('#container-popup').removeClass('active')
+    }
+</script>
