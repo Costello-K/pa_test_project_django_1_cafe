@@ -3,23 +3,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-    {#.timepicker  bootstrap-datetimepicker-widget#}
-    {#div.bootstrap-datetimepicker-widget.dropdown-menu .timepicker-picker .table-condensed tr td {#}
-    {#    width: 40px;#}
-    {#    height: 40px;#}
-
     div.bootstrap-datetimepicker-widget.dropdown-menu {
         width: 100px;
     }
+
     div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed .separator {
         width: 10px;
     }
+
     div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed tr:nth-child(2) td a.btn {
         height: 40px;
         padding: 0;
         margin: 0;
         border: none;
     }
+    span.glyphicon {
+        color: #A9A9A9;
+    }
+
+    span.glyphicon:hover {
+           color: #696969;
+    }
+
+    div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed>tr>td>span.timepicker-hour,
+    div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed>tr>td>span.timepicker-minute {
+        font-size: 14px;
+    }
+
 
 </style>
 
