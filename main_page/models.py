@@ -146,7 +146,7 @@ class Review(models.Model):
 
 
 class UserReservation(models.Model):
-    phone_validator = RegexValidator(regex=r'^\+?3?8?[ -(]?0 ?\(?\d{2}\)?([ -]?\d{7})',
+    phone_validator = RegexValidator(regex=r'^\+?3?8?[- 0]?[- (]?[- 0(]?[0-9]{2}\)?([ -]?[0-9]){7}',
                                      message='Enter phone in format +380XXXXXXXXX')
     email_validator = RegexValidator(regex=r'[\da-zA-Z](-?[_\da-zA-Z])*-?@([\da-zA-Z]+\.)*[a-z]{2,6}',
                                      message='Enter a valid email address')

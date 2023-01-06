@@ -1211,6 +1211,21 @@ section {
   background: #ffa012;
 }
 
+#book-a-table-form p {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+}
+
+#sent-message-reservation {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border: 2px solid #ff9b08;
+    border-radius: 10px;
+}
+
 /*--------------------------------------------------------------
 # Gallery
 --------------------------------------------------------------*/
@@ -1591,6 +1606,21 @@ section {
   }
 }
 
+#contact-form p {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+}
+
+#sent-message-contact {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border: 2px solid #ff9b08;
+    border-radius: 10px;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -1648,4 +1678,36 @@ section {
 
 #footer .credits {
   font-size: 13px;
+}
+
+/*--------------------------------------------------------------
+# Bootstrap
+--------------------------------------------------------------*/
+
+div.bootstrap-datetimepicker-widget.dropdown-menu {
+  width: 100px;
+}
+
+div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed .separator {
+  width: 10px;
+}
+
+div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed tr:nth-child(2) td a.btn {
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+span.glyphicon {
+  color: #A9A9A9;
+}
+
+span.glyphicon:hover {
+  color: #696969;
+}
+
+div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed>tr>td>span.timepicker-hour,
+div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed>tr>td>span.timepicker-minute {
+  font-size: 14px;
 }

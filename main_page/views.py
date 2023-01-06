@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import StartPage, About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs, Review
     # , Maps
 from .forms import FormUserReservation, FormUserMessage
@@ -11,21 +11,33 @@ MAX_QUANTITY_REVIEWS_DISPLAYED = 10
 
 # Create your views here.
 def main_page(request):
-    popup_reservation, popup_message, not_valid_form = False, False, False
+    form_user_reservation = FormUserReservation()
+    form_user_message = FormUserMessage()
 
     if request.method == 'POST':
-        form_user_reservation = FormUserReservation(request.POST)
-        form_user_messages = FormUserMessage(request.POST)
-        if form_user_reservation.is_valid():
-            form_user_reservation.save()
-            popup_reservation = True
-            # return redirect('/')
-        elif form_user_messages.is_valid():
-            form_user_messages.save()
-            popup_message = True
-            # return redirect('/')
-        else:
-            not_valid_form = True
+        if 'form-user-reservation' in request.POST:
+            form_user_reservation = FormUserReservation(request.POST)
+            if form_user_reservation.is_valid():
+                form_user_reservation.save()
+                return render(request,
+                              'inner_book_table_form.html',
+                              context={'form_user_reservation': FormUserReservation(), 'sent_message': True}
+                              )
+            else:
+                return render(request,
+                              'inner_book_table_form.html',
+                              context={'form_user_reservation': form_user_reservation}
+                              )
+        if 'form-user-message' in request.POST:
+            form_user_message = FormUserMessage(request.POST)
+            if form_user_message.is_valid():
+                form_user_message.save()
+                return render(request,
+                              'inner_contact_form.html',
+                              context={'form_user_message': FormUserMessage(), 'sent_message': True}
+                              )
+            else:
+                return render(request, 'inner_contact_form.html', context={'form_user_message': form_user_message})
 
     start_page = StartPage.objects.filter(is_visible=True)[:MAX_QUANTITY_START_PAGES_SLIDES]
     about = About.objects.first()
@@ -37,8 +49,6 @@ def main_page(request):
     gallery = RestaurantPhoto.objects.filter(is_visible=True)[:MAX_QUANTITY_OF_PHOTOS_IN_GALLERY_DISPLAYED]
     chefs = Chefs.objects.filter(is_visible=True)
     reviews = Review.objects.filter(is_visible=True)[:MAX_QUANTITY_REVIEWS_DISPLAYED]
-    form_user_reservation = FormUserReservation()
-    form_user_message = FormUserMessage()
     # maps = Maps()
 
     return render(request, 'main_page.html', context={
@@ -54,8 +64,6 @@ def main_page(request):
         'reviews': reviews,
         'form_user_reservation': form_user_reservation,
         'form_user_message': form_user_message,
-        'popup_reservation': popup_reservation,
-        'popup_message': popup_message,
-        'not_valid_form': not_valid_form,
         # 'maps': maps,
     })
+

@@ -243,4 +243,82 @@
     }
   });
 
+  function add_data_time_picker() {
+    $('#date').daterangepicker({
+      singleDatePicker: true,
+      autoApply: true,
+      locale: {
+        format: 'YYYY-MM-DD',
+        'applyLabel': 'Застосувати',
+        'cancelLabel': 'Скасувати',
+        'daysOfWeek': [
+          'Нд',
+          'Пн',
+          'Вт',
+          'Ср',
+          'Чт',
+          'Пт',
+          'Сб'
+        ],
+        'monthNames': [
+          'Січень',
+          'Лютий',
+          'Березень',
+          'Квітень',
+          'Травень',
+          'Червень',
+          'Липень',
+          'Серпень',
+          'Вересень',
+          'Жовтень',
+          'Листопад',
+          'Грудень'
+        ],
+      }
+    });
+    $('#date').val('');
+
+    $('#time').datetimepicker({
+      format: 'HH:mm'
+    });
+  }
+
+  function del_form_sent_message() {
+    $('#sent-message-reservation').delay(5000).slideUp(400, function () {
+      $('#sent-message-reservation').remove();
+    });
+
+    $('#sent-message-contact').delay(5000).slideUp(400, function(){
+		$('#sent-message-contact').remove();
+	});
+  }
+
+  $('#book-a-table-form').on('submit', function(){
+    $.ajax({
+      url: '',
+      method: 'POST',
+      data: $('#book-a-table-form').serialize(),
+      success: function (response) {
+        $('#book-a-table-form').empty().append(response)
+        add_data_time_picker()
+        del_form_sent_message()
+      },
+    });
+    return false;
+  });
+
+  $('#contact-form').on('submit', function(){
+    $.ajax({
+      url: '',
+      method: 'POST',
+      data: $('#contact-form').serialize(),
+      success: function (response) {
+        $('#contact-form').empty().append(response)
+        del_form_sent_message()
+      },
+    });
+    return false;
+  });
+
+  add_data_time_picker()
 })()

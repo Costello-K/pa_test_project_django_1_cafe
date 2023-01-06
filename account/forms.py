@@ -40,7 +40,7 @@ class RegistrationForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
                                 'class': "form-control",
-                                'placeholder': "username"})
+                                'placeholder': "Введіть унікальне ім'я для сайту username"})
                                )
     firstname = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
@@ -50,7 +50,7 @@ class RegistrationForm(forms.ModelForm):
     lastname = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
                                 'class': "form-control",
-                                'placeholder': "Фамілія"})
+                                'placeholder': "Прізвище"})
                                )
     phone = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
@@ -62,13 +62,13 @@ class RegistrationForm(forms.ModelForm):
                                 'class': "form-control",
                                 'placeholder': "Пароль"})
                                )
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
                                 'type': "password",
                                 'class': "form-control",
                                 'placeholder': "Повторіть пароль"})
                                 )
 
     def clean_password2(self):
-        if self.cleaned_data['password'] == self.cleaned_data['password2']:
+        if self.cleaned_data['password'] == self.cleaned_data['confirm_password']:
             return self.cleaned_data['password']
         raise forms.ValidationError('Паролі не співпадають')

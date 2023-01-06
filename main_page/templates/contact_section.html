@@ -23,7 +23,7 @@
             <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
               <i class="bi bi-clock"></i>
               <h4>Графік роботи:</h4>
-              <p>Щодня:<br>11:00 - 23.00</p>
+              <p>Щодня:<br>11:00 - 23:00</p>
             </div>
 
             <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
@@ -41,28 +41,8 @@
         </div>
 
         <form id="contact-form" method="post" role="form" class="php-email-form">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-md-6 form-group">
-              {{ form_user_message.name }}
-            </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-              {{ form_user_message.email }}
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            {{ form_user_message.subject_message }}
-          </div>
-          <div class="form-group mt-3">
-            {{ form_user_message.message }}
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Ваше повідомлення відправлено. Дякую!</div>
-          </div>
-          <div class="text-center"><button type="submit">Відправити повідомлення</button></div>
+            {% include 'inner_contact_form.html' %}
         </form>
 
       </div>
-    </section>
+</section>

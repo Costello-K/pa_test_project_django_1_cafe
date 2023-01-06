@@ -1,49 +1,10 @@
 <section id="book-a-table" class="book-a-table">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>РЕЗЕРВ <span>СТОЛУ</span></h2>
-        </div>
-
-        <form id="book-a-table-form" method="post" role="form" class="php-email-form">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-lg-4 col-md-6 form-group">
-              {{ form_user_reservation.name }}
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              {{ form_user_reservation.email }}
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              {{ form_user_reservation.phone }}
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              {{ form_user_reservation.future_date_reserve }}
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              {{ form_user_reservation.future_time_reserve }}
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              {{ form_user_reservation.persons }}
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            {{ form_user_reservation.message }}
-            <div class="validate"></div>
-          </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Ваш запит на бронювання відправлено. Ми передзвонимо Вам або надішлемо електронний лист для підтвердження бронювання. Дякую!</div>
-          </div>
-          <div class="text-center"><button type="submit">Відправити повідомлення</button></div>
-        </form>
-
-      </div>
-    </section>
+    <div class="container">
+         <div class="section-title">
+              <h2>РЕЗЕРВ <span>СТОЛУ</span></h2>
+         </div>
+         <form id="book-a-table-form" method="post" role="form" class="php-email-form">
+              {% include 'inner_book_table_form.html' %}
+         </form>
+    </div>
+</section>

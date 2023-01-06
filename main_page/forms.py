@@ -53,6 +53,7 @@ class FormUserReservation(forms.ModelForm):
                             )
     persons = forms.IntegerField(widget=forms.NumberInput(attrs={
                                 'type': "number",
+                                'min': '1',
                                 'name': "people",
                                 'class': "form-control",
                                 'id': "people",
