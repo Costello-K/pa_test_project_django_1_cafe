@@ -15,12 +15,14 @@ from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 dotenv_path = os.path.join(BASE_DIR, '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
@@ -29,6 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -45,7 +48,6 @@ INSTALLED_APPS = [
     'main_page.apps.MainPageConfig',
     'account.apps.AccountConfig',
     'manager.apps.ManagerConfig',
-    'userprofile.apps.UserprofileConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +125,10 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# User
+
+AUTH_USER_MODEL = "account.User"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
