@@ -20,12 +20,12 @@ def main_page(request):
             if form_user_reservation.is_valid():
                 form_user_reservation.save()
                 return render(request,
-                              'inner_book_table_form.html',
+                              'book_table_form.html',
                               context={'form_user_reservation': FormUserReservation(), 'sent_message': True}
                               )
             else:
                 return render(request,
-                              'inner_book_table_form.html',
+                              'book_table_form.html',
                               context={'form_user_reservation': form_user_reservation}
                               )
         if 'form-user-message' in request.POST:
@@ -33,11 +33,11 @@ def main_page(request):
             if form_user_message.is_valid():
                 form_user_message.save()
                 return render(request,
-                              'inner_contact_form.html',
+                              'contact_form.html',
                               context={'form_user_message': FormUserMessage(), 'sent_message': True}
                               )
             else:
-                return render(request, 'inner_contact_form.html', context={'form_user_message': form_user_message})
+                return render(request, 'contact_form.html', context={'form_user_message': form_user_message})
 
     start_page = StartPage.objects.filter(is_visible=True)[:MAX_QUANTITY_START_PAGES_SLIDES]
     about = About.objects.first()

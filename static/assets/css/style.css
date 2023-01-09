@@ -1218,7 +1218,8 @@ section {
 }
 
 #sent-message-reservation {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 15px;
     padding: 10px 15px;
@@ -1613,7 +1614,8 @@ section {
 }
 
 #sent-message-contact {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 15px;
     padding: 10px 15px;
@@ -1710,4 +1712,141 @@ span.glyphicon:hover {
 div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed>tr>td>span.timepicker-hour,
 div.bootstrap-datetimepicker-widget.dropdown-menu table.table-condensed>tr>td>span.timepicker-minute {
   font-size: 14px;
+}
+
+#circle-progress.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#circle-progress @keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes fill {
+	0% {
+		opacity: 1;
+	}
+	50%,
+    100% {
+		opacity: 0;
+	}
+}
+
+@keyframes mask {
+	0% {
+		opacity: 0;
+	}
+	50%,
+    100% {
+		opacity: 1;
+	}
+}
+
+.m-progress-loader {
+	background: #e6e6e6;
+	border-radius: 50%;
+	height: 1em;
+	overflow: hidden;
+	position: relative;
+	width: 1em;
+}
+
+.m-progress-loader::before, .m-progress-loader::after {
+	background: #b3b3b3;
+	content: " ";
+	display: block;
+	height: 1em;
+	position: absolute;
+	width: 0.5em;
+}
+
+.m-progress-loader::before {
+	border-radius: 999px 0 0 999px;
+	transform-origin: 0.5em 0.5em;
+}
+
+.m-progress-loader::after {
+	border-radius: 0 999px 999px 0;
+	opacity: 0;
+	right: 0;
+	top: 0;
+}
+
+.m-progress-loader--fill {
+	background: #f3f5f6;
+	border-radius: 50%;
+	height: 0.9em;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	width: 0.9em;
+	z-index: 3;
+}
+
+.m-progress-loader--mask {
+	background: inherit;
+	border-radius: 999px 0 0 999px;
+	height: 1em;
+	position: absolute;
+	width: 0.5em;
+}
+
+.mm-progress-loader--scheduling::before, .mm-progress-loader--scheduling::after {
+	background: #ffb03b;
+}
+
+.container-form-message {
+  display: flex;
+  align-items: center;
+}
+
+#sent-message-reservation .message {
+  text-align: center;
+  margin-right: 25px;
+}
+
+#sent-message-contact .message {
+  text-align: center;
+  margin-right: 50px;
+}
+
+#sent-message-reservation .m-progress-loader {
+	font-size: 2.5rem;
+}
+
+#sent-message-contact .m-progress-loader {
+	font-size: 2.2rem;
+}
+
+
+#sent-message-reservation .m-progress-loader::before {
+	animation: spin 12s linear infinite;
+}
+
+#sent-message-reservation .m-progress-loader::after {
+	animation: fill 12s steps(1) infinite;
+}
+
+#sent-message-reservation .m-progress-loader--mask {
+	animation: mask 12s steps(1) infinite;
+}
+
+#sent-message-contact .m-progress-loader::before {
+	animation: spin 7s linear infinite;
+}
+
+#sent-message-contact .m-progress-loader::after {
+	animation: fill 7s steps(1) infinite;
+}
+
+#sent-message-contact .m-progress-loader--mask {
+	animation: mask 7s steps(1) infinite;
 }

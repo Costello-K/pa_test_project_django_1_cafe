@@ -35,28 +35,33 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'firstname', 'lastname', 'phone', )
+        fields = ('username', 'first_name', 'last_name', 'phone', 'email', )
 
     username = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
                                 'class': "form-control",
                                 'placeholder': "Введіть унікальне ім'я для сайту username"})
                                )
-    firstname = forms.CharField(widget=forms.TextInput(attrs={
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
                                 'class': "form-control",
                                 'placeholder': "Ім'я"})
-                                )
-    lastname = forms.CharField(widget=forms.TextInput(attrs={
+                                 )
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
                                 'class': "form-control",
                                 'placeholder': "Прізвище"})
-                               )
+                                )
     phone = forms.CharField(widget=forms.TextInput(attrs={
                                 'type': "text",
                                 'class': "form-control",
                                 'placeholder': "Номер телефону"})
                             )
+    email = forms.CharField(widget=forms.TextInput(attrs={
+                                'type': "text",
+                                'class': "form-control",
+                                'placeholder': "e-mail"})
+                                   )
     password = forms.CharField(widget=forms.PasswordInput(attrs={
                                 'type': "password",
                                 'class': "form-control",

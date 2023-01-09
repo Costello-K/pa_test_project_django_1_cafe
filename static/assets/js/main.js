@@ -284,41 +284,50 @@
   }
 
   function del_form_sent_message() {
-    $('#sent-message-reservation').delay(5000).slideUp(400, function () {
+    $('#sent-message-reservation').delay(12000).slideUp(400, function () {
       $('#sent-message-reservation').remove();
     });
 
-    $('#sent-message-contact').delay(5000).slideUp(400, function(){
+    $('#sent-message-contact').delay(7000).slideUp(400, function(){
 		$('#sent-message-contact').remove();
 	});
   }
 
-  $('#book-a-table-form').on('submit', function(){
-    $.ajax({
-      url: '',
-      method: 'POST',
-      data: $('#book-a-table-form').serialize(),
-      success: function (response) {
-        $('#book-a-table-form').empty().append(response)
-        add_data_time_picker()
-        del_form_sent_message()
-      },
+  function add_handler_book_form () {
+    $('#book-a-table-form').on('submit', function () {
+      $.ajax({
+        url: '',
+        method: 'POST',
+        data: $('#book-a-table-form').serialize(),
+        success: function (response) {
+          $('#book-a-table-form').replaceWith(response)
+          add_data_time_picker()
+          add_handler_book_form ()
+          del_form_sent_message()
+        },
+      });
+      return false;
     });
-    return false;
-  });
+  }
 
-  $('#contact-form').on('submit', function(){
-    $.ajax({
-      url: '',
-      method: 'POST',
-      data: $('#contact-form').serialize(),
-      success: function (response) {
-        $('#contact-form').empty().append(response)
-        del_form_sent_message()
-      },
+  function add_handler_contact_form () {
+    $('#contact-form').on('submit', function () {
+      $.ajax({
+        url: '',
+        method: 'POST',
+        data: $('#contact-form').serialize(),
+        success: function (response) {
+          $('#contact-form').replaceWith(response)
+          del_form_sent_message()
+          add_handler_contact_form()
+        },
+      });
+      return false;
     });
-    return false;
-  });
+  }
 
   add_data_time_picker()
+  add_handler_book_form()
+  add_handler_contact_form()
+
 })()

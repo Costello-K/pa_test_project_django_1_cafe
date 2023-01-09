@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'main_page.apps.MainPageConfig',
     'account.apps.AccountConfig',
     'manager.apps.ManagerConfig',
+    'userprofile.apps.UserprofileConfig',
 ]
 
 MIDDLEWARE = [
@@ -94,9 +95,15 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        # 'OPTIONS': {
+        #     'user_attributes': ('username', 'first_name', 'last_name', 'email', 'first_name', 'last_name', 'phone'),
+        # }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 10,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
