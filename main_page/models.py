@@ -1,9 +1,7 @@
 import os
 import uuid
-
 from django.db import models
 from django.core.validators import RegexValidator
-from django_google_maps import fields as map_fields
 
 
 class NewFileName:
@@ -187,8 +185,3 @@ class UserMessage(models.Model):
 
     class Meta:
         ordering = ('-date', )
-
-
-# class Maps(models.Model):
-#     address = map_fields.AddressField(max_length=200)
-#     geolocation = map_fields.GeoLocationField(max_length=100)

@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render
 from .models import StartPage, About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs, Review
-    # , Maps
 from .forms import FormUserReservation, FormUserMessage
 
 MAX_QUANTITY_START_PAGES_SLIDES = 5
@@ -49,7 +48,6 @@ def main_page(request):
     gallery = RestaurantPhoto.objects.filter(is_visible=True)[:MAX_QUANTITY_OF_PHOTOS_IN_GALLERY_DISPLAYED]
     chefs = Chefs.objects.filter(is_visible=True)
     reviews = Review.objects.filter(is_visible=True)[:MAX_QUANTITY_REVIEWS_DISPLAYED]
-    # maps = Maps()
 
     return render(request, 'main_page.html', context={
         'start_page': start_page,
@@ -64,6 +62,5 @@ def main_page(request):
         'reviews': reviews,
         'form_user_reservation': form_user_reservation,
         'form_user_message': form_user_message,
-        # 'maps': maps,
     })
 

@@ -1,13 +1,8 @@
 from django.contrib import admin
-import json
-from django_google_maps import widgets as map_widgets
-from django_google_maps import fields as map_fields
 from .models import StartPage, About, WhyUsCard, DishCategory, Dish, Events, RestaurantPhoto, Chefs, Review, \
     UserReservation, UserMessage
-    # , Maps
 
 # Register your models here.
-# admin.site.register(Maps)
 admin.site.register(About)
 
 
@@ -96,13 +91,3 @@ class ReviewAdmin(admin.ModelAdmin):
     list_editable = ['is_visible']
     search_fields = ('rating', )
     list_max_show_all = 50
-
-
-# @admin.register(RentalAdmin)
-# class RentalAdminAdmin(admin.ModelAdmin):
-#     formfield_overrides = {
-#         map_fields.AddressField: {
-#             'widget': map_widgets.GoogleMapsAddressWidget(attrs={
-#                 'data-autocomplete-options': json.dumps({'types': ['geocode', 'establishment'],
-#                                                          'componentRestrictions': {'country': 'us'}
-#                                                          })})}}
